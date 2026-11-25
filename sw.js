@@ -1,5 +1,5 @@
 // Robinson: offline play from GitHub Pages. The game is one file (play.html); it is served from the cache at once and refreshed in the background.
-const CACHE = 'robinsononshore-v1', FILES = ['./play.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
+const CACHE = 'robinsononshore-v071', FILES = ['./play.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
